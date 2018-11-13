@@ -1,0 +1,15 @@
+---
+- name: Installation des serveurs web
+  host: web
+  remote_user: root
+  vars:
+    user: volibear
+    domain: local.dev
+  roles:
+  - nginx
+  - utils
+  - user
+  - apache
+
+
+...

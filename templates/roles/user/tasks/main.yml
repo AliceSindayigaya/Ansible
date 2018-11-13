@@ -1,0 +1,15 @@
+--
+ - name: Création d'un nouveau utilisateur
+   when: user is define
+   user: nom={{ user }} comment = "Mon user" shell=/usr/bbin/zsh
+ - name: Ajout de la clef SSH
+   when: user is define
+   authorized_key: user=volibear key="{{ lookup('file", '~/.ssh/id_rsa.pub')}}"
+ -name: "{{ user }} devient sudoers"
+  when: user is define
+  template: src=templates/sudoers.j2 dest=/etc/sudoers.d/{{ user }}-sudoer validate= 'visudo -cf %s '
+-
+
+
+
+...

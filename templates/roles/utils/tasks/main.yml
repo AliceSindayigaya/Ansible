@@ -1,0 +1,12 @@
+---
+  tasks:
+     apt: name={{item}} update_cache=yes state=latest
+     with items:
+      - vim
+      - htop
+      - git
+      - zsh
+      - apache
+
+
+...
